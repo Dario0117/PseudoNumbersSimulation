@@ -5,6 +5,8 @@
  */
 package LOGICA;
 
+import numbergenerator.NumberGenerator;
+
 /**
  *
  * @author Esteban Dario Barboza Primera
@@ -16,6 +18,11 @@ public class main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //                      x, a, c, m, tipo
+        NumberGenerator.Generar(1, 7, 5, 999983, 1);
+        System.out.println(NumberGenerator.validarNumeros());
+//        for(Float numb: NumberGenerator.getInternList())
+//            System.out.println(numb);
     }
     
 }
