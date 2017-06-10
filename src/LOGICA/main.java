@@ -21,10 +21,17 @@ public class main {
             De los números aleatorios, los primeros 100 van a ser para
             la cantidad de personas que llegan por corrida.
         */
+        int corridas_inicio = 100;
+        int tamaño_corridas = 110;
+        
         NumberGenerator.Generar(1, 7, 5, 999983, 1);
         System.out.println(NumberGenerator.validarNumeros());
-//        for(Float numb: NumberGenerator.getInternList())
-//            System.out.println(numb);
+        for(int i=0;i<2;i++)
+            System.out.println(NumberGenerator.getInternList().get(i));
+        System.out.println("");
+        System.out.println(Distribuciones.generarExponencial(8.9001514E-5, 12));
+        
+        
     }
     
 }
