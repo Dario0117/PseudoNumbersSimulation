@@ -104,7 +104,10 @@ public class DistribucionesIT {
             {1,1,1,1},
             
         };
-        for(int i=0;i<16;i++)
-            System.out.println("Numero con dist: "+Distribuciones.generarMultinomial("pan", values[i]));
+        for(int i=0;i<16;i++){
+            String val = "";
+            for(Integer n:values[i]) val += n+",";
+            System.out.printf("Probabilidad de la opción %s: %f %n",val,Distribuciones.generarMultinomial("pan", values[i]));
+        }
     }
 }
