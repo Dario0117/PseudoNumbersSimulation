@@ -5,6 +5,8 @@
  */
 package LOGICA;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -82,11 +84,27 @@ public class DistribucionesIT {
      */
     @Test
     public void testGenerarMultinomial() {
-//        System.out.println("generarMultinomial");
-//        double expResult = 0.0;
-//        double result = Distribuciones.generarMultinomial();
-//        assertEquals(expResult, result, 0.0);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        System.out.println("generarMultinomial");
+        int[][] values = {
+            {0,0,0,0},
+            {0,0,0,1},
+            {0,0,1,0},
+            {0,0,1,1},
+            {0,1,0,0},
+            {0,1,0,1},
+            {0,1,1,0},
+            {0,1,1,1},
+            {1,0,0,0},
+            {1,0,0,1},
+            {1,0,1,0},
+            {1,0,1,1},
+            {1,1,0,0},
+            {1,1,0,1},
+            {1,1,1,0},
+            {1,1,1,1},
+            
+        };
+        for(int i=0;i<16;i++)
+            System.out.println("Numero con dist: "+Distribuciones.generarMultinomial("pan", values[i]));
     }
 }

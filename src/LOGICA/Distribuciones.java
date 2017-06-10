@@ -37,10 +37,10 @@ public class Distribuciones {
         return 0;
     }
 
-    public static double generarMultinomial(String variable, List<Integer> values) {
+    public static double generarMultinomial(String variable, int[] values) {
         switch(variable){
             case "pan":
-                return panes(values.get(0), values.get(1), values.get(2), values.get(3));
+                return panes(values[0], values[1], values[2], values[3]);
             case "bebida":
                 break;
             case "edad":
@@ -50,11 +50,18 @@ public class Distribuciones {
     }
 
     private static double panes(int P300, int P600, int P1200, int P2000) {
+        double[] pro = {0.1,0.5,0.3,0.1};
         int n = P300 + P600 + P1200 + P2000;
+//        System.out.println("N: "+n);
         long factorial = factorial(n);
+//        System.out.println("Factorial: "+factorial);
         long factorial2 = factorial(P300)*factorial(P600)*factorial(P1200)*factorial(P2000);
-        double dist = factorial / factorial2;
-        return dist;
+//        System.out.println("Sumatoria de factoriales: "+factorial2);
+        double producto = Math.pow(pro[0], P300)*Math.pow(pro[1], P600)*Math.pow(pro[2], P1200)*Math.pow(pro[3], P2000);
+//        System.out.println("Producto: "+producto);
+        double dist = (double)factorial / (double)factorial2;
+//        System.out.println("Dist: "+dist);
+        return dist*producto;
     }
 
     private static long factorial(int numero) {
