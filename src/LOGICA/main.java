@@ -17,8 +17,10 @@ public class main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        //                      x, a, c, m, tipo
+        /*
+            De los números aleatorios, los primeros 100 van a ser para
+            la cantidad de personas que llegan por corrida.
+        */
         NumberGenerator.Generar(1, 7, 5, 999983, 1);
         System.out.println(NumberGenerator.validarNumeros());
 //        for(Float numb: NumberGenerator.getInternList())
