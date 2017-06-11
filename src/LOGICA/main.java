@@ -24,12 +24,10 @@ public class main {
         int corridas_inicio = 100;
         int tamaño_corridas = 110;
         
-        NumberGenerator.Generar(1, 7, 5, 999983, 1);
+        NumberGenerator.Generar(1, 7, 5, 99991, 1);
         System.out.println(NumberGenerator.validarNumeros());
-        for(int i=0;i<2;i++)
-            System.out.println(NumberGenerator.getInternList().get(i));
-        System.out.println("");
-        System.out.println(Distribuciones.generarExponencial(8.9001514E-5, 12));
+//        for(int i=0;i<2;i++)
+//            System.out.println(NumberGenerator.getInternList().get(i));
         
         
     }
