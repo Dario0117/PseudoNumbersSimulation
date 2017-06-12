@@ -24,7 +24,7 @@ public class Animacion extends JPanel {
 
     private static ArrayList<Cliente> personas;
     private static final int SIZE_WIDTH = 800,
-            SIZE_HEIGHT = 600;
+                            SIZE_HEIGHT = 600;
     private static int time = 0;
 
     public static void main(String[] args) {
