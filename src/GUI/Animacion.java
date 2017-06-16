@@ -30,14 +30,14 @@ public class Animacion extends JPanel {
     public static void main(String[] args) {
 
         personas = new ArrayList();          // pan   bebida
-        personas.add(new Cliente(1, 5, 10, 'M', true, true));
-        personas.add(new Cliente(1, 1, 2, 'H', true, true));
-        personas.add(new Cliente(2, 4, 7, 'M', false, false));
-        personas.add(new Cliente(3, 5, 7, 'H', true, true));
-        personas.add(new Cliente(5, 8, 12, 'H', false, true));
-        personas.add(new Cliente(6, 8, 14, 'M', true, false));
-        personas.add(new Cliente(7, 9, 11, 'H', false, true));
-        personas.add(new Cliente(10, 10, 14, 'M', true, true));
+//        personas.add(new Cliente(1, 5, 10, 'M', true, true));
+//        personas.add(new Cliente(1, 1, 2, 'H', true, true));
+//        personas.add(new Cliente(2, 4, 7, 'M', false, false));
+//        personas.add(new Cliente(3, 5, 7, 'H', true, true));
+//        personas.add(new Cliente(5, 8, 12, 'H', false, true));
+//        personas.add(new Cliente(6, 8, 14, 'M', true, false));
+//        personas.add(new Cliente(7, 9, 11, 'H', false, true));
+//        personas.add(new Cliente(10, 10, 14, 'M', true, true));
 
         JFrame v = new JFrame();
         Animacion panel = new Animacion();
@@ -128,18 +128,18 @@ public class Animacion extends JPanel {
                         personas.get(i).getX() + 19,
                         personas.get(i).getY() + 29);
                 g.setFont(new Font("TimesRoman", Font.BOLD, 12));
-                if (personas.get(i).hasPan()) {
-                    g.drawString(
-                            "p",
-                            personas.get(i).getX() + 32,
-                            personas.get(i).getY() + 18);
-                }
-                if (personas.get(i).hasBebida()) {
-                    g.drawString(
-                            "b",
-                            personas.get(i).getX() + 32,
-                            personas.get(i).getY() + 32);
-                }
+//                if (personas.get(i).hasPan()) {
+//                    g.drawString(
+//                            "p",
+//                            personas.get(i).getX() + 32,
+//                            personas.get(i).getY() + 18);
+//                }
+//                if (personas.get(i).hasBebida()) {
+//                    g.drawString(
+//                            "b",
+//                            personas.get(i).getX() + 32,
+//                            personas.get(i).getY() + 32);
+//                }
             }
         }
     }

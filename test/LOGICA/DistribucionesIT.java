@@ -72,11 +72,12 @@ public class DistribucionesIT {
     @Test
     public void testGenerarBernoulli() {
         System.out.println("generarBernoulli");
-        assertEquals(1, Distribuciones.generarBernoulli(0.05, 0.6), 0.0);
-        assertEquals(0, Distribuciones.generarBernoulli(0.65, 0.6), 0.0);
-        assertEquals(1, Distribuciones.generarBernoulli(0.6, 0.6), 0.0);
-        assertEquals(1, Distribuciones.generarBernoulli(0.35, 0.6), 0.0);
-        assertEquals(1, Distribuciones.generarBernoulli(0.15, 0.6), 0.0);
+        double prob = 0.6513;
+        assertEquals(true, Distribuciones.generarBernoulli(0.05, prob));
+        assertEquals(false, Distribuciones.generarBernoulli(0.66, prob));
+        assertEquals(true, Distribuciones.generarBernoulli(0.6, prob));
+        assertEquals(true, Distribuciones.generarBernoulli(0.35, prob));
+        assertEquals(true, Distribuciones.generarBernoulli(0.15, prob));
     }
 
     /**
@@ -102,12 +103,68 @@ public class DistribucionesIT {
             {1,1,0,1},
             {1,1,1,0},
             {1,1,1,1},
-            
         };
+        
+        int[][] values2 = {
+            {0,0,0,0,0},
+            {0,0,0,0,1},
+            {0,0,0,1,0},
+            {0,0,0,1,1},
+            {0,0,1,0,0},
+            {0,0,1,0,1},
+            {0,0,1,1,0},
+            {0,0,1,1,1},
+            {0,1,0,0,0},
+            {0,1,0,0,1},
+            {0,1,0,1,0},
+            {0,1,0,1,1},
+            {0,1,1,0,0},
+            {0,1,1,0,1},
+            {0,1,1,1,0},
+            {0,1,1,1,1},
+            {1,0,0,0,0},
+            {1,0,0,0,1},
+            {1,0,0,1,0},
+            {1,0,0,1,1},
+            {1,0,1,0,0},
+            {1,0,1,0,1},
+            {1,0,1,1,0},
+            {1,0,1,1,1},
+            {1,1,0,0,0},
+            {1,1,0,0,1},
+            {1,1,0,1,0},
+            {1,1,0,1,1},
+            {1,1,1,0,0},
+            {1,1,1,0,1},
+            {1,1,1,1,0},
+            {1,1,1,1,1},
+        };
+        
+        int[][] values3 = {
+            {0,0,0,0,1},
+            {0,0,0,1,0},
+            {0,0,1,0,0},
+            {0,1,0,0,0},
+            {1,0,0,0,0},
+        };
+        
+        System.out.println("---PANES---");
         for(int i=0;i<16;i++){
             String val = "";
             for(Integer n:values[i]) val += n+",";
-            System.out.printf("Probabilidad de la opción %s: %f %n",val,Distribuciones.generarMultinomial("pan", values[i]));
+            System.out.printf("%s	%f%n",val,Distribuciones.generarMultinomial("pan", values[i]));
+        }
+        System.out.println("---EDADES---");
+        for(int i=0;i<5;i++){
+            String val = "";
+            for(Integer n:values3[i]) val += n+",";
+            System.out.printf("%s	%f%n",val,Distribuciones.generarMultinomial("edad", values3[i]));
+        }
+        System.out.println("---BEBIDAS---");
+        for(int i=0;i<32;i++){
+            String val = "";
+            for(Integer n:values2[i]) val += n+",";
+            System.out.printf("%s	%f%n",val,Distribuciones.generarMultinomial("bebida", values2[i]));
         }
     }
 }
