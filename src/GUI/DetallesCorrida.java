@@ -51,7 +51,11 @@ public class DetallesCorrida extends javax.swing.JDialog {
     public void llenarClientes() {
         DefaultTableModel model = (DefaultTableModel) this.detalles.getModel();
         Object datos[] = new Object[6];
-        
+        int ed_1 = 0;
+        int ed_2 = 0;
+        int ed_3 = 0;
+        int ed_4 = 0;
+        int ed_5 = 0;
         for (int i = 0; i < main.corridas[corrida].getLongitud(); i++) {
             datos[0] = main.corridas[corrida].getClientes().get(i).getSexo();
             datos[1] = main.rango_edades[main.corridas[corrida].getClientes().get(i).getEdad()];
@@ -70,11 +74,34 @@ public class DetallesCorrida extends javax.swing.JDialog {
             media_llegada += main.corridas[corrida].getClientes().get(i).getHora_llegada();
             media_atencion += main.corridas[corrida].getClientes().get(i).getHora_espera();
             media_salida += main.corridas[corrida].getClientes().get(i).getHora_salida();
+            
+            switch(main.corridas[corrida].getClientes().get(i).getEdad()){
+                case 1: ed_1++; break;
+                case 2: ed_2++; break;
+                case 3: ed_3++; break;
+                case 4: ed_4++; break;
+                case 5: ed_5++; break;
+            }
         }
+        this.detalles.setModel(model);
+        
         media_llegada /= main.corridas[corrida].getLongitud();
         media_atencion /= main.corridas[corrida].getLongitud();
         media_salida /= main.corridas[corrida].getLongitud();
-        this.detalles.setModel(model);
+        
+        int[] listaNumeros = {0,ed_1,ed_2,ed_3,ed_4,ed_5};
+        int numMayor = 0;
+        for (int i = 1; i < listaNumeros.length; i++) {
+            if(listaNumeros[i]>numMayor){
+                edad_concurrente = i;
+                numMayor = listaNumeros[i];
+            }
+        }
+//        System.out.println(pos);
+//        for (int i = 0; i < listaNumeros.length; i++) {
+//            System.out.print(listaNumeros[i]+" ");
+//        }
+//        System.out.println("");
     }
     
     private void llenarDetallesCorrida(){
@@ -82,6 +109,8 @@ public class DetallesCorrida extends javax.swing.JDialog {
         this.lbl_media_llegada.setText(String.format("%.4f", media_llegada));
         this.lbl_media_espera.setText(String.format("%.4f", media_atencion));
         this.lbl_media_salida.setText(String.format("%.4f", media_salida));
+        this.lbl_rango_edad.setText(String.format("%s", main.rango_edades[edad_concurrente]));
+        
     }
     
     private String generarCompras(int cliente){
