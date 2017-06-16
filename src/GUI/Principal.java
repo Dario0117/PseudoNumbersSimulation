@@ -201,6 +201,8 @@ public class Principal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < main.cantidad_corridas; i++) {
+            //System.out.println("Corrida: "+(i+1));
+            double mayor = 0;
             for (int j = 0; j < main.corridas[i].getLongitud(); j++) {
                 // hora_llegada, tiempo_espera, tiempo_atencion, sexo, pan, bebida, edad
                 Cliente temp = new Cliente(
@@ -212,8 +214,12 @@ public class Principal extends javax.swing.JFrame {
                         NumberGenerator.getInternList().get(cabecera_aleatorios++), //bebidas
                         NumberGenerator.getInternList().get(cabecera_aleatorios++) // edad
                 );
+                if(temp.getTiempo_llegada()> mayor){
+                    mayor = temp.getTiempo_llegada();
+                }
                 main.corridas[i].getClientes().add(temp);
             }
+            //System.out.println(mayor);
         }
         vacearTabla(corridas);
         llenarCorridas();

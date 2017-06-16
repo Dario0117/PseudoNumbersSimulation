@@ -5,7 +5,11 @@
  */
 package GUI;
 
+import LOGICA.Cliente;
+import LOGICA.Cliente_anim;
+import LOGICA.Corrida;
 import LOGICA.main;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -159,6 +163,42 @@ public class DetallesCorrida extends javax.swing.JDialog {
         }
         
         return (compras.length()>0) ? compras.substring(0, compras.length()-2): null;
+    }
+    
+    public ArrayList<Cliente_anim> formatearClientes(){
+        ArrayList<Cliente_anim> nuevos_datos = new ArrayList<>();
+        Corrida c = main.corridas[corrida];
+        int h_ll = (int) c.getClientes().get(0).getTiempo_llegada();
+        int h_a = (int) ((c.getClientes().get(0).getTiempo_espera()< 1) ? 1:c.getClientes().get(0).getTiempo_espera());
+        int h_s = (int) ((c.getClientes().get(0).getTiempo_salida()< 1) ? 1:c.getClientes().get(0).getTiempo_salida());
+        nuevos_datos.add(
+            new Cliente_anim(
+                h_ll, 
+                h_ll+h_a, 
+                h_ll+h_a+h_s, 
+                c.getClientes().get(0).getSexo(), 
+                c.getClientes().get(0).getEdad(), 
+                c.getClientes().get(0).getPan(), 
+                c.getClientes().get(0).getBebida()
+            )
+        );
+        for (int i = 1; i < c.getLongitud(); i++) {
+            h_ll = nuevos_datos.get(i-1).getMinuto_llegada()+(int)c.getClientes().get(i).getTiempo_llegada();
+            h_a = (int) ((c.getClientes().get(i).getTiempo_espera()< 1) ? 1:c.getClientes().get(i).getTiempo_espera());
+            h_s = (int) ((c.getClientes().get(i).getTiempo_salida()< 1) ? 1:c.getClientes().get(i).getTiempo_salida());
+            nuevos_datos.add(
+                new Cliente_anim(
+                    h_ll, 
+                    h_ll+h_a, 
+                    h_ll+h_a+h_s, 
+                    c.getClientes().get(i).getSexo(), 
+                    c.getClientes().get(i).getEdad(), 
+                    c.getClientes().get(i).getPan(), 
+                    c.getClientes().get(i).getBebida()
+                )
+            );
+        }
+        return nuevos_datos;
     }
 
     /**
@@ -507,7 +547,11 @@ public class DetallesCorrida extends javax.swing.JDialog {
 
     private void btn_animarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_animarActionPerformed
         // TODO add your handling code here:
-        
+        for(Cliente_anim obj :formatearClientes()){
+            System.out.println(obj);
+        }
+//        Animacion_old animacion = new Animacion_old(corrida);
+//        animacion.animar();
     }//GEN-LAST:event_btn_animarActionPerformed
 
     /**

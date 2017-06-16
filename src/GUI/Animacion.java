@@ -5,13 +5,18 @@
  */
 package GUI;
 
+import LOGICA.Cliente_anim;
+import java.awt.FlowLayout;
+import java.util.ArrayList;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Esteban Dario Barboza Primera
  */
 public class Animacion extends javax.swing.JDialog {
 
-    private int corrida;
+    private ArrayList<Cliente_anim> corrida;
     
     /**
      * Creates new form Animacion
@@ -19,12 +24,20 @@ public class Animacion extends javax.swing.JDialog {
     public Animacion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.escenario.setLayout(new FlowLayout());
+        JLabel test = new JLabel("test");
+        test.setLocation(1, 10);
+        this.escenario.add(test);
     }
     
-    public Animacion(java.awt.Frame parent, boolean modal, int corrida) {
+    public Animacion(java.awt.Frame parent, boolean modal, 
+                    ArrayList<Cliente_anim> corrida) {
         super(parent, modal);
         initComponents();
         this.corrida = corrida;
+        
+        JLabel test = new JLabel("test");
+        this.escenario.add(test);
     }
 
     /**
@@ -36,17 +49,52 @@ public class Animacion extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        lbl_time = new javax.swing.JLabel();
+        escenario = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel1.setText("Tiempo:");
+
+        lbl_time.setText("TIME");
+
+        javax.swing.GroupLayout escenarioLayout = new javax.swing.GroupLayout(escenario);
+        escenario.setLayout(escenarioLayout);
+        escenarioLayout.setHorizontalGroup(
+            escenarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        escenarioLayout.setVerticalGroup(
+            escenarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 558, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(654, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(lbl_time)
+                .addGap(66, 66, 66))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(escenario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lbl_time))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(escenario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -95,5 +143,8 @@ public class Animacion extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel escenario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbl_time;
     // End of variables declaration//GEN-END:variables
 }

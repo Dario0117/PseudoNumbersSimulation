@@ -12,40 +12,41 @@ import java.util.ArrayList;
  * @author Esteban Dario Barboza Primera
  */
 public class Cliente_anim {
-    private final int edad=0;
-    private final double hora_llegada, 
-                         hora_atencion,
-                         hora_salida;
+    private final int edad;
+    private final int minuto_llegada, 
+                    minuto_atencion,
+                    minuto_salida;
     private final char sexo;
     private final ArrayList<String> pan,
                                     bebida;
 
-    public Cliente_anim(double hora_llegada, double hora_atencion, 
-                        double hora_salida, char sexo, ArrayList<String> pan, 
+    public Cliente_anim(int hora_llegada, int hora_atencion, 
+                        int hora_salida, char sexo, int edad, ArrayList<String> pan, 
                         ArrayList<String> bebida) {
         
-        this.hora_llegada = hora_llegada;
-        this.hora_atencion = hora_atencion;
-        this.hora_salida = hora_salida;
+        this.minuto_llegada = hora_llegada;
+        this.minuto_atencion = hora_atencion;
+        this.minuto_salida = hora_salida;
         this.sexo = sexo;
         this.pan = pan;
         this.bebida = bebida;
+        this.edad = edad;
     }
 
     public int getEdad() {
         return edad;
     }
 
-    public double getHora_llegada() {
-        return hora_llegada;
+    public int getMinuto_llegada() {
+        return minuto_llegada;
     }
 
-    public double getHora_atencion() {
-        return hora_atencion;
+    public int getMinuto_atencion() {
+        return minuto_atencion;
     }
 
-    public double getHora_salida() {
-        return hora_salida;
+    public double getMinuto_salida() {
+        return minuto_salida;
     }
 
     public char getSexo() {
@@ -59,6 +60,10 @@ public class Cliente_anim {
     public ArrayList<String> getBebida() {
         return bebida;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Cliente_anim{" + "edad=" + edad + ", minuto_llegada=" + minuto_llegada + ", minuto_atencion=" + minuto_atencion + ", minuto_salida=" + minuto_salida + ", sexo=" + sexo + ", pan=" + pan + ", bebida=" + bebida + '}';
+    }
     
 }

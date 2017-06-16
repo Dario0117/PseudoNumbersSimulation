@@ -32,40 +32,39 @@ public class Animacion_old extends JPanel {
     
     
 
-    public void main() {
+    public void animar() {
 
-//        JFrame v = new JFrame();
-//        Animacion_old panel = new Animacion_old();
-//        JLabel anuncio_tiempo = new JLabel("Tiempo: ");
-//        JLabel tiempo = new JLabel();
-//        JLabel anuncio_llegada = new JLabel("Recien llegados y en espera");
-//        JLabel anuncio_atencion = new JLabel("Siendo atendidos");
-//
-//        anuncio_tiempo.setBounds(SIZE_WIDTH - 100, 10, 100, 30);
-//        tiempo.setBounds(SIZE_WIDTH - 50, 10, 100, 30);
-//        anuncio_llegada.setBounds(SIZE_WIDTH - 400, 10, 200, 30);
-//        anuncio_atencion.setBounds(10, 10, 100, 30);
-//
-//        v.getContentPane().add(anuncio_tiempo);
-//        v.getContentPane().add(tiempo);
-//        v.getContentPane().add(anuncio_llegada);
-//        v.getContentPane().add(anuncio_atencion);
-//        v.getContentPane().add(panel);
-//        v.pack();
-//        v.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-//        v.setLocationRelativeTo(null);
-//        v.setResizable(false);
-//        v.setVisible(true);
-//
-//        while (time <= 15) {
-//            time++;
-//            tiempo.setText("" + time);
-//            v.repaint();
-//            try {
-//                Thread.sleep(1000);
-//            } catch (Exception ex) {
-//            }
-//        }
+        JFrame v = new JFrame();
+        JLabel anuncio_tiempo = new JLabel("Tiempo: ");
+        JLabel tiempo = new JLabel();
+        JLabel anuncio_llegada = new JLabel("Recien llegados y en espera");
+        JLabel anuncio_atencion = new JLabel("Siendo atendidos");
+
+        anuncio_tiempo.setBounds(SIZE_WIDTH - 100, 10, 100, 30);
+        tiempo.setBounds(SIZE_WIDTH - 50, 10, 100, 30);
+        anuncio_llegada.setBounds(SIZE_WIDTH - 400, 10, 200, 30);
+        anuncio_atencion.setBounds(10, 10, 100, 30);
+
+        v.getContentPane().add(anuncio_tiempo);
+        v.getContentPane().add(tiempo);
+        v.getContentPane().add(anuncio_llegada);
+        v.getContentPane().add(anuncio_atencion);
+        v.getContentPane().add(this);
+        v.pack();
+        v.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        v.setLocationRelativeTo(null);
+        v.setResizable(false);
+        v.setVisible(true);
+
+        while (time <= 240) {
+            time++;
+            tiempo.setText("" + time);
+            v.repaint();
+            try {
+                Thread.sleep(1000);
+            } catch (Exception ex) {
+            }
+        }
     }
 
     private void arrive(Graphics g) {
