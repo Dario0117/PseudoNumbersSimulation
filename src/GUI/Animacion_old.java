@@ -134,6 +134,18 @@ public class Animacion_old extends JPanel {
                         500 + 19,
                         500 + 29);
                 g.setFont(new Font("TimesRoman", Font.BOLD, 12));
+                if (datos.get(i).getBebida().size()>0) {
+                     g.drawString(
+                             "p",
+                             500 + 32,
+                             500 + 18);
+                 }
+                 if (datos.get(i).getBebida().size()>0) {
+                     g.drawString(
+                             "b",
+                            500 + 32,
+                            500 + 32);
+                 }
             }
         }
     }
