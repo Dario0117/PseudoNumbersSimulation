@@ -19,12 +19,6 @@ public class DetallesCorrida extends javax.swing.JDialog {
      */
     
     private int corrida;
-    private int cantidad_hombres = 0;
-    private int cantidad_mujeres = 0;
-    private double media_llegada = 0;
-    private double media_atencion = 0;
-    private double media_salida = 0;
-    private int edad_concurrente = 0;
     
     public DetallesCorrida(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -51,6 +45,14 @@ public class DetallesCorrida extends javax.swing.JDialog {
         DefaultTableModel model = (DefaultTableModel) this.detalles.getModel();
         Object datos[] = new Object[6];
         
+        
+        int cantidad_hombres = 0;
+        int cantidad_mujeres = 0;
+        double media_llegada = 0;
+        double media_atencion = 0;
+        double media_salida = 0;
+        int edad_concurrente = 0;
+        
         int ed_1 = 0;
         int ed_2 = 0;
         int ed_3 = 0;
@@ -61,6 +63,14 @@ public class DetallesCorrida extends javax.swing.JDialog {
         int p600=0;
         int p1200=0;
         int p2000=0;
+        
+        int avena=0;
+        int refresco=0;
+        int gaseosa=0;
+        int natural=0;
+        int agua_u_otro=0;
+        
+        int ventas_concretadas=0;
         
         for (int i = 0; i < main.corridas[corrida].getLongitud(); i++) {
             datos[0] = main.corridas[corrida].getClientes().get(i).getSexo();
@@ -93,6 +103,12 @@ public class DetallesCorrida extends javax.swing.JDialog {
             if(main.corridas[corrida].getClientes().get(i).getPan().contains("P600")) p600++;
             if(main.corridas[corrida].getClientes().get(i).getPan().contains("P1200")) p1200++;
             if(main.corridas[corrida].getClientes().get(i).getPan().contains("P2000")) p2000++;
+            
+            if(main.corridas[corrida].getClientes().get(i).getBebida().contains("AVENA")) avena++;
+            if(main.corridas[corrida].getClientes().get(i).getBebida().contains("REFRESCO")) refresco++;
+            if(main.corridas[corrida].getClientes().get(i).getBebida().contains("GASEOSA")) gaseosa++;
+            if(main.corridas[corrida].getClientes().get(i).getBebida().contains("NATURAL")) natural++;
+            if(main.corridas[corrida].getClientes().get(i).getBebida().contains("AGUA U OTRO")) agua_u_otro++;
         }
         this.detalles.setModel(model);
         
@@ -124,6 +140,13 @@ public class DetallesCorrida extends javax.swing.JDialog {
         this.lbl_p600.setText(""+p600);
         this.lbl_p1200.setText(""+p1200);
         this.lbl_p2000.setText(""+p2000);
+        this.lbl_avena.setText(""+avena);
+        this.lbl_refresco.setText(""+refresco);
+        this.lbl_gaseosa.setText(""+gaseosa);
+        this.lbl_natural.setText(""+natural);
+        this.lbl_agua_u_otro.setText(""+agua_u_otro);
+        //this.lbl_ventas.setText(""+(p300+p600+p1200+p2000+avena+refresco+gaseosa+natural+agua_u_otro));
+        this.lbl_ventas.setText(""+Principal.sacarVentasTerminadas(corrida));
     }
 
     
@@ -172,18 +195,18 @@ public class DetallesCorrida extends javax.swing.JDialog {
         jLabel14 = new javax.swing.JLabel();
         lbl_p2000 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        lbl_avena = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        lbl_refresco = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        lbl_gaseosa = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
+        lbl_natural = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
+        lbl_agua_u_otro = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        lbl_ventas_terminadas = new javax.swing.JLabel();
+        lbl_ventas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -280,29 +303,29 @@ public class DetallesCorrida extends javax.swing.JDialog {
 
         jLabel16.setText("P2000:");
 
-        jLabel17.setText("CANT");
+        lbl_avena.setText("CANT");
 
         jLabel18.setText("AVENA:");
 
-        jLabel19.setText("CANT");
+        lbl_refresco.setText("CANT");
 
         jLabel20.setText("REFRE.:");
 
-        jLabel21.setText("CANT");
+        lbl_gaseosa.setText("CANT");
 
         jLabel22.setText("GASE.:");
 
-        jLabel23.setText("CANT");
+        lbl_natural.setText("CANT");
 
         jLabel24.setText("NATU.:");
 
-        jLabel25.setText("CANT");
+        lbl_agua_u_otro.setText("CANT");
 
         jLabel26.setText("AG. OT.:");
 
-        jLabel4.setText("Ventas terminadas:");
+        jLabel4.setText("Ventas concretadas:");
 
-        lbl_ventas_terminadas.setText("VENTAS");
+        lbl_ventas.setText("VENTAS");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -332,30 +355,29 @@ public class DetallesCorrida extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel19))
+                        .addComponent(lbl_refresco))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel24)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel23))
+                        .addComponent(lbl_natural))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel21))
+                        .addComponent(lbl_gaseosa))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17))
+                        .addComponent(lbl_avena))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel25)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_agua_u_otro)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_ventas_terminadas)
+                .addComponent(lbl_ventas)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -365,33 +387,33 @@ public class DetallesCorrida extends javax.swing.JDialog {
                     .addComponent(jLabel9)
                     .addComponent(lbl_p300)
                     .addComponent(jLabel18)
-                    .addComponent(jLabel17))
+                    .addComponent(lbl_avena))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(lbl_p600)
                     .addComponent(jLabel20)
-                    .addComponent(jLabel19))
+                    .addComponent(lbl_refresco))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(lbl_p1200)
                     .addComponent(jLabel22)
-                    .addComponent(jLabel21))
+                    .addComponent(lbl_gaseosa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(lbl_p2000)
                     .addComponent(jLabel24)
-                    .addComponent(jLabel23))
+                    .addComponent(lbl_natural))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26)
-                    .addComponent(jLabel25))
+                    .addComponent(lbl_agua_u_otro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(lbl_ventas_terminadas)))
+                    .addComponent(lbl_ventas)))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -521,15 +543,10 @@ public class DetallesCorrida extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -541,15 +558,20 @@ public class DetallesCorrida extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_agua_u_otro;
+    private javax.swing.JLabel lbl_avena;
     private javax.swing.JLabel lbl_cantidad_clientes;
+    private javax.swing.JLabel lbl_gaseosa;
     private javax.swing.JLabel lbl_media_espera;
     private javax.swing.JLabel lbl_media_llegada;
     private javax.swing.JLabel lbl_media_salida;
+    private javax.swing.JLabel lbl_natural;
     private javax.swing.JLabel lbl_p1200;
     private javax.swing.JLabel lbl_p2000;
     private javax.swing.JLabel lbl_p300;
     private javax.swing.JLabel lbl_p600;
     private javax.swing.JLabel lbl_rango_edad;
-    private javax.swing.JLabel lbl_ventas_terminadas;
+    private javax.swing.JLabel lbl_refresco;
+    private javax.swing.JLabel lbl_ventas;
     // End of variables declaration//GEN-END:variables
 }

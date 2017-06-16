@@ -55,7 +55,7 @@ public class Principal extends javax.swing.JFrame {
         this.corridas.setModel(model);
     }
     
-    private int sacarPanesVendidos(int i){
+    public static int sacarPanesVendidos(int i){
         int cnt=0;
         for (int j = 0; j < main.corridas[i].getLongitud(); j++) {
             cnt += main.corridas[i].getClientes().get(j).getPan().size();
@@ -63,7 +63,7 @@ public class Principal extends javax.swing.JFrame {
         return cnt;
     }
     
-    private int sacarBebidasVendidas(int i){
+    public static int sacarBebidasVendidas(int i){
         int cnt=0;
         for (int j = 0; j < main.corridas[i].getLongitud(); j++) {
             cnt += main.corridas[i].getClientes().get(j).getBebida().size();
@@ -71,7 +71,7 @@ public class Principal extends javax.swing.JFrame {
         return cnt;
     }
     
-    private int sacarVentasTerminadas(int i){
+    public static int sacarVentasTerminadas(int i){
         int cnt=0;
         for (int j = 0; j < main.corridas[i].getLongitud(); j++) {
             if(main.corridas[i].getClientes().get(j).getPan().size()>0 && main.corridas[i].getClientes().get(j).getBebida().size() > 0){
