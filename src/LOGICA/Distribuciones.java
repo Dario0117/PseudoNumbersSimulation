@@ -5,17 +5,11 @@
  */
 package LOGICA;
 
-import java.util.List;
-
 /**
  *
  * @author Esteban Dario Barboza Primera
  */
 public class Distribuciones {
-
-    public static double generarPoisson(double num_aleatorio, double lambda) {
-        return 0;
-    }
 
     /*
         lambda = media de cada variable aleatoria

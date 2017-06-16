@@ -14,10 +14,6 @@ import numbergenerator.NumberGenerator;
  * @author Esteban Dario Barboza Primera
  */
 public class main {
-
-    /**
-     * @param args the command line arguments
-     */
     
     public static int[] longitud_corrida ={
         112,121,114,116,121,113,119,121,117,116,
@@ -63,55 +59,6 @@ public class main {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
         }
         new Principal().setVisible(true);
-        // Generar y validad numeros aleatorios
-        
-//        for (int i = 0; i < 2; i++) {
-//            for (int j = 0; j < 2; j++) {
-//                for (int k = 0; k < 2; k++) {
-//                    for (int l = 0; l < 2; l++) {
-//                        for (int m = 0; m < 2; m++) {
-//                            System.out.println("{"+i+","+j+","+k+","+l+","+m+"},");
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        
-        
-//        NumberGenerator.Generar(1, 7, 5, 99991, 1);
-//        System.out.println(NumberGenerator.validarNumeros());
-//        for(int i=0;i<10;i++)
-//            System.out.println(NumberGenerator.getInternList().get(i));
-        // instanciar cada corrida con su tamaño
-//        for(int i=0;i<50;i++){
-//            corridas[i] = new Corrida(longitud_corrida[i]);
-//        }
-        // generar clientes para cada corrida
-//        for (int i = 0; i < 50; i++) {
-//            for (int j = 0; j < corridas[i].getLongitud(); j++) {
-//                // hora_llegada, tiempo_espera, tiempo_atencion, sexo, pan, bebida, edad
-//                Cliente temp = new Cliente(
-//                        Distribuciones.generarExponencial(NumberGenerator.getInternList().get(cabecera_aleatorios++), promedio_llegada), // hora llegada
-//                        Distribuciones.generarExponencial(NumberGenerator.getInternList().get(cabecera_aleatorios++), promedio_atencion), // hora atencion
-//                        Distribuciones.generarExponencial(NumberGenerator.getInternList().get(cabecera_aleatorios++), promedio_salida), // hora salida
-//                        (Distribuciones.generarBernoulli(NumberGenerator.getInternList().get(cabecera_aleatorios++), probabilidad_hombre)) ? 'H':'M', // sexo
-//                        NumberGenerator.getInternList().get(cabecera_aleatorios++), //panes
-//                        NumberGenerator.getInternList().get(cabecera_aleatorios++), //bebidas
-//                        NumberGenerator.getInternList().get(cabecera_aleatorios++) // edad
-//                );
-//                corridas[i].getClientes().add(temp);
-//            }
-//        }
-//        double cnt = 0;
-//        for (int i = 0; i < 10; i++) {
-//            cnt = 0;
-//            for (int j = 0; j < 10; j++) {
-//                cnt+=corridas[i].getClientes().get(j).getHora_llegada();
-//            }
-//            //System.out.println(corridas[i].getClientes().get(j).toString());
-//            System.out.println(cnt);
-//        }
-//        System.out.println(cabecera_aleatorios);
     }
     
 }

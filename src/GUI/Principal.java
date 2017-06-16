@@ -6,7 +6,6 @@
 package GUI;
 
 import LOGICA.Cliente;
-import LOGICA.Corrida;
 import LOGICA.Distribuciones;
 import LOGICA.main;
 import static LOGICA.main.cabecera_aleatorios;
@@ -14,7 +13,6 @@ import static LOGICA.main.probabilidad_hombre;
 import static LOGICA.main.promedio_atencion;
 import static LOGICA.main.promedio_llegada;
 import static LOGICA.main.promedio_salida;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import numbergenerator.NumberGenerator;
@@ -74,7 +72,7 @@ public class Principal extends javax.swing.JFrame {
     public static int sacarVentasTerminadas(int i){
         int cnt=0;
         for (int j = 0; j < main.corridas[i].getLongitud(); j++) {
-            if(main.corridas[i].getClientes().get(j).getPan().size() == 0 && main.corridas[i].getClientes().get(j).getBebida().size() == 0){
+            if(main.corridas[i].getClientes().get(j).getPan().isEmpty() && main.corridas[i].getClientes().get(j).getBebida().isEmpty()){
                 cnt += 1;
             }
         }
