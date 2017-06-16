@@ -19,6 +19,12 @@ public class DetallesCorrida extends javax.swing.JDialog {
      */
     
     private int corrida;
+    private int cantidad_hombres = 0;
+    private int cantidad_mujeres = 0;
+    private double media_llegada = 0;
+    private double media_atencion = 0;
+    private double media_salida = 0;
+    private int edad_concurrente = 0;
     
     public DetallesCorrida(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -32,7 +38,7 @@ public class DetallesCorrida extends javax.swing.JDialog {
         this.setTitle("Detalles de la corrida: "+corrida);
         this.corrida = corrida-1;
         llenarClientes();
-        
+        llenarDetallesCorrida();
     }
     
     public void vacearTabla(javax.swing.JTable Tabla) {
@@ -46,7 +52,7 @@ public class DetallesCorrida extends javax.swing.JDialog {
         DefaultTableModel model = (DefaultTableModel) this.detalles.getModel();
         Object datos[] = new Object[6];
         
-        for (int i = 0; i < main.cantidad_corridas; i++) {
+        for (int i = 0; i < main.corridas[corrida].getLongitud(); i++) {
             datos[0] = main.corridas[corrida].getClientes().get(i).getSexo();
             datos[1] = main.rango_edades[main.corridas[corrida].getClientes().get(i).getEdad()];
             datos[2] = main.corridas[corrida].getClientes().get(i).getHora_llegada();
@@ -54,21 +60,41 @@ public class DetallesCorrida extends javax.swing.JDialog {
             datos[4] = main.corridas[corrida].getClientes().get(i).getHora_salida();
             datos[5] = generarCompras(i);
             model.addRow(datos);
+            
+            if(main.corridas[corrida].getClientes().get(i).getSexo()=='H'){
+                cantidad_hombres++;
+            }else{
+                cantidad_mujeres++;
+            }
+            
+            media_llegada += main.corridas[corrida].getClientes().get(i).getHora_llegada();
+            media_atencion += main.corridas[corrida].getClientes().get(i).getHora_espera();
+            media_salida += main.corridas[corrida].getClientes().get(i).getHora_salida();
         }
+        media_llegada /= main.corridas[corrida].getLongitud();
+        media_atencion /= main.corridas[corrida].getLongitud();
+        media_salida /= main.corridas[corrida].getLongitud();
         this.detalles.setModel(model);
+    }
+    
+    private void llenarDetallesCorrida(){
+        this.lbl_cantidad_clientes.setText(String.format("%dH %dM", cantidad_hombres, cantidad_mujeres));
+        this.lbl_media_llegada.setText(String.format("%.4f", media_llegada));
+        this.lbl_media_espera.setText(String.format("%.4f", media_atencion));
+        this.lbl_media_salida.setText(String.format("%.4f", media_salida));
     }
     
     private String generarCompras(int cliente){
         String compras="";
         for (int i = 0; i < main.corridas[corrida].getClientes().get(cliente).getPan().size(); i++) {
-            compras += main.corridas[corrida].getClientes().get(cliente).getPan().get(i)+",";
+            compras += main.corridas[corrida].getClientes().get(cliente).getPan().get(i)+", ";
         }
         
         for (int i = 0; i < main.corridas[corrida].getClientes().get(cliente).getBebida().size(); i++) {
-            compras += main.corridas[corrida].getClientes().get(cliente).getBebida().get(i)+",";
+            compras += main.corridas[corrida].getClientes().get(cliente).getBebida().get(i)+", ";
         }
         
-        return (compras.length()>0) ? compras.substring(0, compras.length()-1): null;
+        return (compras.length()>0) ? compras.substring(0, compras.length()-2): null;
     }
 
     /**
