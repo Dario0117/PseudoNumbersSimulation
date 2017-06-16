@@ -41,7 +41,6 @@ public class Animacion_old extends JPanel {
         ImageIcon imageIcon = new ImageIcon(srcImg); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
         Image newimg = image.getScaledInstance(w, h, java.awt.Image.SCALE_SMOOTH);
-
         return newimg;
     }
 
@@ -69,16 +68,25 @@ public class Animacion_old extends JPanel {
         v.setLocationRelativeTo(null);
         v.setResizable(false);
         v.setVisible(true);
-
-        while (time <= 240) {
-            time++;
-            tiempo.setText("" + time);
-            v.repaint();
-            try {
-                Thread.sleep(1000);
-            } catch (Exception ex) {
+        
+        Thread th = new Thread(){
+            @Override
+            public void run() {
+                super.run(); //To change body of generated methods, choose Tools | Templates.
+                while (time <= 240) {
+                    time++;
+                    tiempo.setText("" + time);
+                    v.repaint();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception ex) {
+                    }
+                }
             }
-        }
+            
+        };
+        
+        th.start();
     }
 
     private void arrive(Graphics g) {

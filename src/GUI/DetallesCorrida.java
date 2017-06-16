@@ -547,11 +547,11 @@ public class DetallesCorrida extends javax.swing.JDialog {
 
     private void btn_animarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_animarActionPerformed
         // TODO add your handling code here:
-        for(Cliente_anim obj :formatearClientes()){
-            System.out.println(obj);
-        }
-//        Animacion_old animacion = new Animacion_old(corrida);
-//        animacion.animar();
+//        for(Cliente_anim obj :formatearClientes()){
+//            System.out.println(obj);
+//        }
+        Animacion_old animacion = new Animacion_old(formatearClientes());
+        animacion.animar();
     }//GEN-LAST:event_btn_animarActionPerformed
 
     /**
