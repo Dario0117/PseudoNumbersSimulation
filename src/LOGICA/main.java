@@ -5,7 +5,8 @@
  */
 package LOGICA;
 
-import GUI.Principal;
+import GUI.Animacion_old;
+import java.util.ArrayList;
 import javax.swing.UnsupportedLookAndFeelException;
 import numbergenerator.NumberGenerator;
 
@@ -58,7 +59,21 @@ public class main {
             javax.swing.UIManager.setLookAndFeel(javax.swing.UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
         }
-        new Principal().setVisible(true);
+//        new Principal().setVisible(true);
+        ArrayList<Cliente_anim> data = new ArrayList<>();
+        ArrayList<String> pan = new ArrayList<>();
+        pan.add("P300");
+        ArrayList<String> bebida = new ArrayList<>();
+        bebida.add("AVENA");
+        
+        data.add(new Cliente_anim(1, 3, 6, 'H', 1, pan, bebida));
+//        data.add(new Cliente_anim(2, 3, 5, 'M', 3, pan, bebida));
+//        data.add(new Cliente_anim(5, 7, 8, 'H', 2, pan, bebida));
+//        data.add(new Cliente_anim(9, 11, 16, 'H', 4, pan, bebida));
+//        data.add(new Cliente_anim(20, 27, 30, 'H', 5, pan, bebida));
+        
+        Animacion_old t = new Animacion_old(data);
+        t.animar();
     }
     
 }

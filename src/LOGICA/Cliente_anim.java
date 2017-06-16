@@ -5,6 +5,7 @@
  */
 package LOGICA;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 /**
@@ -16,6 +17,8 @@ public class Cliente_anim {
     private final int minuto_llegada, 
                     minuto_atencion,
                     minuto_salida;
+    private int status = 0;
+    private Color color = Color.RED;
     private final char sexo;
     private final ArrayList<String> pan,
                                     bebida;
@@ -31,6 +34,22 @@ public class Cliente_anim {
         this.pan = pan;
         this.bebida = bebida;
         this.edad = edad;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public int getEdad() {
