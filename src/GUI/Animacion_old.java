@@ -29,6 +29,8 @@ public class Animacion_old extends JPanel {
     private final int SIZE_WIDTH = 800,
             SIZE_HEIGHT = 600;
     private int time = 0;
+    private int Y_lleg = 40;
+    private int Y_at = 40;
     private ArrayList<Cliente_anim> datos;
 
     public Animacion_old(ArrayList<Cliente_anim> datos) {
@@ -83,6 +85,7 @@ public class Animacion_old extends JPanel {
         for (int i = 0; i < datos.size(); i++) {
             Cliente_anim client = datos.get(i);
             if (client.getStatus() == 0 && client.getMinuto_llegada() <= time) {
+                client.setY(Y_lleg);
                 g.setColor(client.getColor());
                 g.fillOval(client.getX(), client.getY(), 50, 50);
                 g.setColor(Color.BLACK);
@@ -91,7 +94,8 @@ public class Animacion_old extends JPanel {
                         client.getSexo() + "",
                         client.getX() + 19,
                         client.getY() + 29);
-                break;
+                if(Y_lleg>= 400) Y_lleg = 40;
+                else Y_lleg+=50;
             }
         }
     }
@@ -100,6 +104,7 @@ public class Animacion_old extends JPanel {
         for (int i = 0; i < datos.size(); i++) {
             Cliente_anim client = datos.get(i);
             if (client.getStatus() <= 1 && client.getMinuto_atencion()<= time) {
+                client.setY(Y_at);
                 datos.get(i).setColor(Color.YELLOW);
                 client.setX(200);
                 datos.get(i).setStatus(1);
@@ -111,7 +116,8 @@ public class Animacion_old extends JPanel {
                         client.getSexo() + "",
                         client.getX() + 19,
                         client.getY() + 29);
-                break;
+               if(Y_at>=400) Y_at = 40;
+                else Y_at+=50; 
             }
         }
     }
