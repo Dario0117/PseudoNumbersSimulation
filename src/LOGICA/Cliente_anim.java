@@ -17,7 +17,9 @@ public class Cliente_anim {
     private final int minuto_llegada, 
                     minuto_atencion,
                     minuto_salida;
-    private int status = 0;
+    private int status = 0,
+            x = 450,
+            y = 40;
     private Color color = Color.RED;
     private final char sexo;
     private final ArrayList<String> pan,
@@ -34,6 +36,22 @@ public class Cliente_anim {
         this.pan = pan;
         this.bebida = bebida;
         this.edad = edad;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public int getStatus() {

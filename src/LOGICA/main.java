@@ -67,10 +67,10 @@ public class main {
         bebida.add("AVENA");
         
         data.add(new Cliente_anim(1, 3, 6, 'H', 1, pan, bebida));
-//        data.add(new Cliente_anim(2, 3, 5, 'M', 3, pan, bebida));
-//        data.add(new Cliente_anim(5, 7, 8, 'H', 2, pan, bebida));
-//        data.add(new Cliente_anim(9, 11, 16, 'H', 4, pan, bebida));
-//        data.add(new Cliente_anim(20, 27, 30, 'H', 5, pan, bebida));
+        data.add(new Cliente_anim(2, 3, 5, 'M', 3, pan, bebida));
+        data.add(new Cliente_anim(5, 7, 8, 'H', 2, pan, bebida));
+        data.add(new Cliente_anim(9, 11, 16, 'H', 4, pan, bebida));
+        data.add(new Cliente_anim(20, 27, 30, 'H', 5, pan, bebida));
         
         Animacion_old t = new Animacion_old(data);
         t.animar();

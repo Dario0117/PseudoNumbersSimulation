@@ -31,28 +31,6 @@ public class Animacion_old extends JPanel {
     private int time = 0;
     private ArrayList<Cliente_anim> datos;
 
-    private anim_pos[] slots_llegadas = {
-        new anim_pos(475, 50, -1),
-        new anim_pos(475, 100, -1),
-        new anim_pos(475, 150, -1),
-        new anim_pos(475, 200, -1),
-        new anim_pos(475, 250, -1),
-        new anim_pos(475, 300, -1),
-        new anim_pos(475, 350, -1),
-        new anim_pos(475, 400, -1),
-    };
-    private anim_pos[] slots_atencion = {
-        new anim_pos(200, 50, -1),
-        new anim_pos(200, 100, -1),
-        new anim_pos(200, 150, -1),
-        new anim_pos(200, 200, -1),
-        new anim_pos(200, 250, -1),
-        new anim_pos(200, 300, -1),
-        new anim_pos(200, 350, -1),
-        new anim_pos(200, 400, -1),
-    };
-    private anim_pos salida = new anim_pos(500, 500, 0);
-
     public Animacion_old(ArrayList<Cliente_anim> datos) {
         this.datos = datos;
     }
@@ -106,20 +84,14 @@ public class Animacion_old extends JPanel {
             Cliente_anim client = datos.get(i);
             if (client.getStatus() == 0 && client.getMinuto_llegada() <= time) {
                 g.setColor(client.getColor());
-                for (int j = 0; j < slots_llegadas.length; j++) {
-                    if(slots_llegadas[j].getIndex()!= j)
-                    if(slots_llegadas[j].getIndex()==-1 ){
-                        g.fillOval(slots_llegadas[j].getX(), slots_llegadas[j].getY(), 50, 50);
-                        g.setColor(Color.BLACK);
-                        g.setFont(new Font("TimesRoman", Font.BOLD, 16));
-                        g.drawString(
-                                client.getSexo() + "",
-                                slots_llegadas[j].getX() + 19,
-                                slots_llegadas[j].getY() + 29);
-                        slots_llegadas[j].setIndex(j);
-                        break;
-                    }
-                }
+                g.fillOval(client.getX(), client.getY(), 50, 50);
+                g.setColor(Color.BLACK);
+                g.setFont(new Font("TimesRoman", Font.BOLD, 16));
+                g.drawString(
+                        client.getSexo() + "",
+                        client.getX() + 19,
+                        client.getY() + 29);
+                break;
             }
         }
     }
@@ -129,22 +101,17 @@ public class Animacion_old extends JPanel {
             Cliente_anim client = datos.get(i);
             if (client.getStatus() <= 1 && client.getMinuto_atencion()<= time) {
                 datos.get(i).setColor(Color.YELLOW);
+                client.setX(200);
                 datos.get(i).setStatus(1);
                 g.setColor(client.getColor());
-                for (int j = 0; j < slots_atencion.length; j++) {
-                    if(slots_atencion[j].getIndex()!= j)
-                    if(slots_atencion[j].getIndex()==-1 ){
-                        g.fillOval(slots_atencion[j].getX(), slots_atencion[j].getY(), 50, 50);
-                        g.setColor(Color.BLACK);
-                        g.setFont(new Font("TimesRoman", Font.BOLD, 16));
-                        g.drawString(
-                                client.getSexo() + "",
-                                slots_atencion[j].getX() + 19,
-                                slots_atencion[j].getY() + 29);
-                        slots_atencion[j].setIndex(j);
-                        break;
-                    }
-                }
+                g.fillOval(client.getX(), client.getY(), 50, 50);
+                g.setColor(Color.BLACK);
+                g.setFont(new Font("TimesRoman", Font.BOLD, 16));
+                g.drawString(
+                        client.getSexo() + "",
+                        client.getX() + 19,
+                        client.getY() + 29);
+                break;
             }
         }
     }
@@ -158,14 +125,14 @@ public class Animacion_old extends JPanel {
                 datos.get(i).setStatus(2);
                 // Color de relleno de la bolita
                 g.setColor(datos.get(i).getColor());
-                g.fillOval(salida.getX(),
-                        salida.getY(), 50, 50);
+                g.fillOval(500,
+                        500, 50, 50);
                 g.setColor(Color.BLACK);
                 g.setFont(new Font("TimesRoman", Font.BOLD, 16));
                 g.drawString(
                         datos.get(i).getSexo() + "",
-                        salida.getX() + 19,
-                        salida.getY() + 29);
+                        500 + 19,
+                        500 + 29);
                 g.setFont(new Font("TimesRoman", Font.BOLD, 12));
             }
         }
