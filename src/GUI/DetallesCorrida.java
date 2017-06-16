@@ -73,9 +73,9 @@ public class DetallesCorrida extends javax.swing.JDialog {
         for (int i = 0; i < main.corridas[corrida].getLongitud(); i++) {
             datos[0] = main.corridas[corrida].getClientes().get(i).getSexo();
             datos[1] = main.rango_edades[main.corridas[corrida].getClientes().get(i).getEdad()];
-            datos[2] = main.corridas[corrida].getClientes().get(i).getHora_llegada();
-            datos[3] = main.corridas[corrida].getClientes().get(i).getHora_espera();
-            datos[4] = main.corridas[corrida].getClientes().get(i).getHora_salida();
+            datos[2] = main.corridas[corrida].getClientes().get(i).getTiempo_llegada();
+            datos[3] = main.corridas[corrida].getClientes().get(i).getTiempo_espera();
+            datos[4] = main.corridas[corrida].getClientes().get(i).getTiempo_salida();
             datos[5] = generarCompras(i);
             model.addRow(datos);
             
@@ -85,9 +85,9 @@ public class DetallesCorrida extends javax.swing.JDialog {
                 cantidad_mujeres++;
             }
             
-            media_llegada += main.corridas[corrida].getClientes().get(i).getHora_llegada();
-            media_atencion += main.corridas[corrida].getClientes().get(i).getHora_espera();
-            media_salida += main.corridas[corrida].getClientes().get(i).getHora_salida();
+            media_llegada += main.corridas[corrida].getClientes().get(i).getTiempo_llegada();
+            media_atencion += main.corridas[corrida].getClientes().get(i).getTiempo_espera();
+            media_salida += main.corridas[corrida].getClientes().get(i).getTiempo_salida();
             
             switch(main.corridas[corrida].getClientes().get(i).getEdad()){
                 case 1: ed_1++; break;
@@ -507,7 +507,7 @@ public class DetallesCorrida extends javax.swing.JDialog {
 
     private void btn_animarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_animarActionPerformed
         // TODO add your handling code here:
-        System.out.println("Not yet boi...");
+        
     }//GEN-LAST:event_btn_animarActionPerformed
 
     /**

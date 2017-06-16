@@ -13,29 +13,25 @@ import java.util.ArrayList;
  * @author Esteban Dario Barboza Primera
  */
 public class Cliente {
-    private int x=500,
-                y=40,
-                status=0,
-                edad=0;
-    private double hora_llegada, 
-                hora_espera,
-                hora_salida;
-    private Color color;
+    private int edad=0;
+    private double tiempo_llegada, 
+                   tiempo_espera,
+                   tiempo_salida;
     private char sexo;
     private ArrayList<String> pan,
-                    bebida;
+                              bebida;
     
     public Cliente(){
         
     }
 
     public Cliente(double hora_llegada, double tiempo_espera, 
-                        double tiempo_atencion, char sexo, 
-                        double pan, double bebida, double edad) {
-        this.hora_llegada = hora_llegada;
-        this.hora_espera = tiempo_espera;
-        this.hora_salida = tiempo_atencion;
-        this.color = Color.RED;
+                   double tiempo_atencion, char sexo, 
+                   double pan, double bebida, double edad) {
+        
+        this.tiempo_llegada = hora_llegada;
+        this.tiempo_espera = tiempo_espera;
+        this.tiempo_salida = tiempo_atencion;
         this.sexo = sexo;
         this.pan = generarPanes(pan);
         this.bebida = generarBebidas(bebida);
@@ -227,28 +223,28 @@ public class Cliente {
         return bebidas;
     }
 
-    public double getHora_llegada() {
-        return hora_llegada;
+    public double getTiempo_llegada() {
+        return tiempo_llegada;
     }
 
-    public void setHora_llegada(double hora_llegada) {
-        this.hora_llegada = hora_llegada;
+    public void setTiempo_llegada(double tiempo_llegada) {
+        this.tiempo_llegada = tiempo_llegada;
     }
 
-    public double getHora_espera() {
-        return hora_espera;
+    public double getTiempo_espera() {
+        return tiempo_espera;
     }
 
-    public void setHora_espera(double hora_espera) {
-        this.hora_espera = hora_espera;
+    public void setTiempo_espera(double tiempo_espera) {
+        this.tiempo_espera = tiempo_espera;
     }
 
-    public double getHora_salida() {
-        return hora_salida;
+    public double getTiempo_salida() {
+        return tiempo_salida;
     }
 
-    public void setHora_salida(double hora_salida) {
-        this.hora_salida = hora_salida;
+    public void setTiempo_salida(double tiempo_salida) {
+        this.tiempo_salida = tiempo_salida;
     }
     
     public char getSexo() {
@@ -258,39 +254,6 @@ public class Cliente {
     public void setSexo(char sexo) {
         this.sexo = sexo;
     }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     public ArrayList<String> getPan() {
         return pan;
     }
@@ -317,7 +280,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "edad=" + edad + ", hora_llegada=" + hora_llegada + ", hora_espera=" + hora_espera + ", hora_salida=" + hora_salida + ", sexo=" + sexo + ", pan=" + pan + ", bebida=" + bebida + '}';
+        return "Cliente{" + "edad=" + edad + ", hora_llegada=" + tiempo_llegada + ", hora_espera=" + tiempo_espera + ", hora_salida=" + tiempo_salida + ", sexo=" + sexo + ", pan=" + pan + ", bebida=" + bebida + '}';
     }
     
 }
