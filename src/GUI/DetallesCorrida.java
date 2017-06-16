@@ -70,8 +70,6 @@ public class DetallesCorrida extends javax.swing.JDialog {
         int natural=0;
         int agua_u_otro=0;
         
-        int ventas_concretadas=0;
-        
         for (int i = 0; i < main.corridas[corrida].getLongitud(); i++) {
             datos[0] = main.corridas[corrida].getClientes().get(i).getSexo();
             datos[1] = main.rango_edades[main.corridas[corrida].getClientes().get(i).getEdad()];

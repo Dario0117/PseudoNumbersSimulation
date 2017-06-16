@@ -74,11 +74,11 @@ public class Principal extends javax.swing.JFrame {
     public static int sacarVentasTerminadas(int i){
         int cnt=0;
         for (int j = 0; j < main.corridas[i].getLongitud(); j++) {
-            if(main.corridas[i].getClientes().get(j).getPan().size()>0 && main.corridas[i].getClientes().get(j).getBebida().size() > 0){
+            if(main.corridas[i].getClientes().get(j).getPan().size() == 0 && main.corridas[i].getClientes().get(j).getBebida().size() == 0){
                 cnt += 1;
             }
         }
-        return cnt;
+        return main.corridas[i].getLongitud()-cnt;
     }
 
     /**
