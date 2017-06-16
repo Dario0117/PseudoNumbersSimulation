@@ -221,6 +221,10 @@ public class Principal extends javax.swing.JFrame {
         llenarCorridas();
         this.jButton1.setEnabled(false);
         
+//        for (int i = 100; i < cabecera_aleatorios; i++) {
+//            System.out.println(NumberGenerator.getInternList().get(i));
+//        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -38,7 +38,6 @@ public class DetallesCorrida extends javax.swing.JDialog {
         this.setTitle("Detalles de la corrida: "+corrida);
         this.corrida = corrida-1;
         llenarClientes();
-        llenarDetallesCorrida();
     }
     
     public void vacearTabla(javax.swing.JTable Tabla) {
@@ -51,11 +50,18 @@ public class DetallesCorrida extends javax.swing.JDialog {
     public void llenarClientes() {
         DefaultTableModel model = (DefaultTableModel) this.detalles.getModel();
         Object datos[] = new Object[6];
+        
         int ed_1 = 0;
         int ed_2 = 0;
         int ed_3 = 0;
         int ed_4 = 0;
         int ed_5 = 0;
+        
+        int p300=0;
+        int p600=0;
+        int p1200=0;
+        int p2000=0;
+        
         for (int i = 0; i < main.corridas[corrida].getLongitud(); i++) {
             datos[0] = main.corridas[corrida].getClientes().get(i).getSexo();
             datos[1] = main.rango_edades[main.corridas[corrida].getClientes().get(i).getEdad()];
@@ -82,6 +88,11 @@ public class DetallesCorrida extends javax.swing.JDialog {
                 case 4: ed_4++; break;
                 case 5: ed_5++; break;
             }
+            
+            if(main.corridas[corrida].getClientes().get(i).getPan().contains("P300")) p300++;
+            if(main.corridas[corrida].getClientes().get(i).getPan().contains("P600")) p600++;
+            if(main.corridas[corrida].getClientes().get(i).getPan().contains("P1200")) p1200++;
+            if(main.corridas[corrida].getClientes().get(i).getPan().contains("P2000")) p2000++;
         }
         this.detalles.setModel(model);
         
@@ -102,16 +113,19 @@ public class DetallesCorrida extends javax.swing.JDialog {
 //            System.out.print(listaNumeros[i]+" ");
 //        }
 //        System.out.println("");
-    }
-    
-    private void llenarDetallesCorrida(){
+
+        
         this.lbl_cantidad_clientes.setText(String.format("%dH %dM", cantidad_hombres, cantidad_mujeres));
         this.lbl_media_llegada.setText(String.format("%.4f", media_llegada));
         this.lbl_media_espera.setText(String.format("%.4f", media_atencion));
         this.lbl_media_salida.setText(String.format("%.4f", media_salida));
         this.lbl_rango_edad.setText(String.format("%s", main.rango_edades[edad_concurrente]));
-        
+        this.lbl_p300.setText(""+p300);
+        this.lbl_p600.setText(""+p600);
+        this.lbl_p1200.setText(""+p1200);
+        this.lbl_p2000.setText(""+p2000);
     }
+
     
     private String generarCompras(int cliente){
         String compras="";
@@ -151,12 +165,12 @@ public class DetallesCorrida extends javax.swing.JDialog {
         lbl_rango_edad = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lbl_p300 = new javax.swing.JLabel();
+        lbl_p600 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        lbl_p1200 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lbl_p2000 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -252,17 +266,17 @@ public class DetallesCorrida extends javax.swing.JDialog {
 
         jLabel9.setText("P300:");
 
-        jLabel10.setText("CANT");
+        lbl_p300.setText("CANT");
 
-        jLabel11.setText("CANT");
+        lbl_p600.setText("CANT");
 
         jLabel12.setText("P600:");
 
-        jLabel13.setText("CANT");
+        lbl_p1200.setText("CANT");
 
         jLabel14.setText("P1200:");
 
-        jLabel15.setText("CANT");
+        lbl_p2000.setText("CANT");
 
         jLabel16.setText("P2000:");
 
@@ -300,19 +314,19 @@ public class DetallesCorrida extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel10))
+                        .addComponent(lbl_p300))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel11))
+                        .addComponent(lbl_p600))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel13))
+                        .addComponent(lbl_p1200))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel15)))
+                        .addComponent(lbl_p2000)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -349,25 +363,25 @@ public class DetallesCorrida extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel10)
+                    .addComponent(lbl_p300)
                     .addComponent(jLabel18)
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel11)
+                    .addComponent(lbl_p600)
                     .addComponent(jLabel20)
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel13)
+                    .addComponent(lbl_p1200)
                     .addComponent(jLabel22)
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jLabel15)
+                    .addComponent(lbl_p2000)
                     .addComponent(jLabel24)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -504,12 +518,8 @@ public class DetallesCorrida extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable detalles;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -535,6 +545,10 @@ public class DetallesCorrida extends javax.swing.JDialog {
     private javax.swing.JLabel lbl_media_espera;
     private javax.swing.JLabel lbl_media_llegada;
     private javax.swing.JLabel lbl_media_salida;
+    private javax.swing.JLabel lbl_p1200;
+    private javax.swing.JLabel lbl_p2000;
+    private javax.swing.JLabel lbl_p300;
+    private javax.swing.JLabel lbl_p600;
     private javax.swing.JLabel lbl_rango_edad;
     private javax.swing.JLabel lbl_ventas_terminadas;
     // End of variables declaration//GEN-END:variables
